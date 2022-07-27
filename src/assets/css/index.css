@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.glass {
+  box-shadow: 0 8px 32px 0 rgba(0, 1, 10, 0.8);
+  backdrop-filter: blur(4px);
+}
+
+h1 {
+  font-size: 4rem;
+  line-height: 4rem;
+}
+
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+  }
+}
+
+.border-gradient-pink-cyan {
+  border-image: linear-gradient(to right, #f24b67, #039ba1) 1;
+}
