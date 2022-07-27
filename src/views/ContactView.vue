@@ -12,7 +12,7 @@ const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>
 
 const errorMessage = ref('')
 
-const submitMessage = () => {
+const submitMessage = async () => {
   if (name.value.length < 3) {
     errorMessage.value = 'Please provide a valid name'
     return
@@ -31,6 +31,12 @@ const submitMessage = () => {
   }
 
   //Send data
+  const encodedName = encodeURIComponent(name.value)
+  const encodedEmail = encodeURIComponent(email.value)
+
+  const sentEmail = await (await fetch(`/.netlify/functions/sendEmail?userName=${encodedName}&userEmail=${encodedEmail}`)).json()
+
+  console.log(sentEmail)
 
   resetForm()
 }
