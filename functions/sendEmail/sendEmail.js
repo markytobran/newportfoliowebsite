@@ -1,38 +1,36 @@
 const nodemailer = require('nodemailer')
 
 exports.handler = async function (event, context) {
-  console.log(event.queryStringParameters)
   const userName = event.queryStringParameters.userName
   const userEmail = event.queryStringParameters.userEmail
-  // Generate test SMTP service account from ethereal.email
-  // Only needed if you don't have a real mail account for testing
-  let testAccount = await nodemailer.createTestAccount()
-  console.log(testAccount)
+
   // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
-    host: 'smtp.ethereal.email',
-    port: 587,
-    secure: false, // true for 465, false for other ports
+    service: 'gmail',
     auth: {
-      user: testAccount.user, // generated ethereal user
-      pass: testAccount.pass, // generated ethereal password
+      user: 'portfoliouser1991', // generated ethereal user
+      pass: 'amjbjeztkgfbqtqw',
     },
   })
 
-  // send mail with defined transport object
-  let info = await transporter.sendMail({
-    from: '"Thomas Weibenfalk" <thomas@example.com>', // sender address
-    to: 'coooool@example.com, evencooooler@example.com', // list of receivers
-    subject: 'New user registered!', // Subject line
-    text: `Name registered: ${userName}, email registered: ${userEmail}`, // plain text body
-    html: `<b>New user registered!<br/><br/>Name registered: ${userName}, email registered: ${userEmail}</b>`, // html body
-  })
+  // Step 2
+  let mailOptions = {
+    from: 'portfoliouser1991@gmail.com', // TODO: email sender
+    to: 'markyto91@gmail.com', // TODO: email receiver
+    subject: 'Nodemailer - Test',
+    text: `Name: ${userName}, Email: ${userEmail}`,
+  }
 
-  console.log('Message sent: %s', info.messageId)
-  // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+  transporter.sendMail(mailOptions, (err, data) => {
+    if (err) {
+      console.log(err)
+      return console.log('Error occurs')
+    }
+    return console.log('Email sent!!!')
+  })
 
   return {
     statusCode: 200,
-    body: JSON.stringify({ previewURL: nodemailer.getTestMessageUrl(info) }),
+    body: JSON.stringify({ message: 'All done' }),
   }
 }
