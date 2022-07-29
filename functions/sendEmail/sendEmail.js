@@ -8,15 +8,15 @@ exports.handler = async function (event, context) {
   let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'portfoliouser1991', // generated ethereal user
-      pass: 'amjbjeztkgfbqtqw',
+      user: process.env.GMAIL_APP_USERNAME, // generated ethereal user
+      pass: process.env.GMAIL_APP_PASSWORD,
     },
   })
 
   // Step 2
   let mailOptions = {
-    from: 'portfoliouser1991@gmail.com', // TODO: email sender
-    to: 'markyto91@gmail.com', // TODO: email receiver
+    from: process.env.GMAIL_APP_FROM_EMAIL_ADDRESS, // TODO: email sender
+    to: process.env.GMAIL_APP_TO_EMAIL_ADDRESS, // TODO: email receiver
     subject: 'Nodemailer - Test',
     text: `Name: ${userName}, Email: ${userEmail}`,
   }
