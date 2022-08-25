@@ -13,8 +13,6 @@ const route = useRoute()
 let isLoading = ref(false)
 let isAlertBoxOpen = ref(false)
 
-const path = computed(() => route.path)
-
 router.beforeEach((to, from, next) => {
   isLoading.value = true
   setTimeout(() => (isLoading.value = false), 2000)
@@ -44,13 +42,13 @@ function closeAlertBox() {
 }
 
 onMounted(() => {
-  setTimeout(() => (isAlertBoxOpen.value = true), 2000)
+  setTimeout(() => (isAlertBoxOpen.value = true), 2200)
 })
 </script>
 
 <template>
   <Header />
-  <main class="bg-light-grey overflow-x-hidden relative" :class="path === '/' ? 'overflow-y-hidden' : ''">
+  <main class="bg-light-grey overflow-x-hidden relative">
     <div
       class="w-1/3 absolute left-1/2 h-20 bg-red-400 -translate-x-1/2 -translate-y-20 z-50 rounded-xl flex flex-col items-center justify-center delay-500 cursor-pointer transition-all duration-900 ease-in-out"
       :class="isAlertBoxOpen ? 'translate-y-0' : ''"

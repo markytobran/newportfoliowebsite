@@ -5,7 +5,7 @@ const spaces = [3, 6, 11, 14, 19, 24, 26, 29, 31, 35]
 
 const beforeEnter = (el) => {
   el.style.right = Math.random() * window.innerWidth + 'px'
-  el.style.top = Math.random() * window.innerHeight + 'px'
+  el.style.top = Math.random() * window.innerHeight - 70 + 'px'
   el.style.width = el.dataset.index % 3 === 0 ? '3px' : el.dataset.index % 2 === 0 ? '2px' : '1px'
   el.style.height = el.dataset.index % 3 === 0 ? '3px' : el.dataset.index % 2 === 0 ? '2px' : '1px'
 }
@@ -24,7 +24,7 @@ const beforeEnter = (el) => {
         <span
           v-for="(letter, index) in message.split('')"
           :key="letter"
-          class="inline-block letter text-2xl md:text-4xl xl:text-6xl tracking-widest"
+          class="inline-block letter text-2xl md:text-4xl xl:text-5.5xl tracking-widest"
           :class="[spaces.includes(index) ? 'ml-3' : '', pinkCharactersList.includes(index) ? 'text-primary-pink' : 'text-white']"
         >
           {{ letter }}
