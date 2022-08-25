@@ -1,4 +1,4 @@
 [build]
 cl = 'npm run build'
 functions = 'functions/'
-publish = 'build'
+publish = 'dist'
