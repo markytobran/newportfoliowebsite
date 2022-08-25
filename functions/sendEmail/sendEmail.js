@@ -8,16 +8,16 @@ exports.handler = async function (event, context) {
     smtpTransport({
       service: 'gmail',
       auth: {
-        user: 'portfoliouser1991',
-        pass: 'amjbjeztkgfbqtqw',
+        user: process.env.GMAIL_APP_USERNAME,
+        pass: process.env.GMAIL_APP_PASSWORD,
       },
     })
   )
 
   try {
     await transporter.sendMail({
-      from: 'portfoliouser1991@gmail.com',
-      to: 'markyto91@gmail.com',
+      from: process.env.GMAIL_APP_FROM_EMAIL_ADDRESS,
+      to: process.env.GMAIL_APP_TO_EMAIL_ADDRESS,
       subject: subject,
       text: `Name: ${name}, Email: ${email}, Message: ${message}`,
     })
@@ -34,34 +34,3 @@ exports.handler = async function (event, context) {
     body: JSON.stringify({ message: 'All done' }),
   }
 }
-
-// const { name, email, subject, message } = JSON.parse(event.body)
-
-// //create reusable transporter object using the default SMTP transport
-// let transporter = nodemailer.createTransport({
-//   service: 'gmail',
-//   host: 'smtp.gmail.com',
-//   port: 587,
-//   secure: false,
-//   auth: {
-//     user: 'portfoliouser1991',
-//     pass: 'amjbjeztkgfbqtqw',
-//   },
-// })
-// let mailOptions = {
-//   from: 'portfoliouser1991@gmail.com',
-//   to: 'markyto91@gmail.com',
-//   subject: subject,
-//   text: `Name: ${name}, Email: ${email}, Message: ${message}`,
-// }
-// transporter.sendMail(mailOptions, (err, data) => {
-//   if (err) {
-//     return console.log('Error occurs')
-//   }
-//   return console.log('Email sent!!!')
-// })
-// return {
-//   statusCode: 200,
-//   body: JSON.stringify({ message: 'All done' }),
-// }
-//}
