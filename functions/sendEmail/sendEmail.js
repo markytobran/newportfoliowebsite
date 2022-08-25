@@ -15,8 +15,7 @@ exports.handler = async function (event, context) {
     from: 'portfoliouser1991@gmail.com',
     to: 'markyto91@gmail.com',
     subject: subject,
-    text: `Name: ${name}, Email: ${email}
-          ${message}`,
+    text: `Name: ${name}, Email: ${email}, Message: ${message}`,
   }
   transporter.sendMail(mailOptions, (err, data) => {
     if (err) {
