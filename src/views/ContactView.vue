@@ -54,7 +54,7 @@ const changeCardTitle = (title = '') => {
 }
 
 const submitMessage = async () => {
-  if (isInputValid) {
+  if (isInputValid()) {
     try {
       await fetch('/.netlify/functions/sendEmail', {
         method: 'POST',

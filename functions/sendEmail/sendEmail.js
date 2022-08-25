@@ -3,6 +3,10 @@ const nodemailer = require('nodemailer')
 exports.handler = async function (event, context) {
   const { name, email, subject, message } = JSON.parse(event.body)
 
+  console.log(event.body)
+
+  console.log(process.env.GMAIL_APP_USERNAME)
+
   //create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
     service: 'gmail',
