@@ -2,6 +2,8 @@ const nodemailer = require('nodemailer')
 const smtpTransport = require('nodemailer-smtp-transport')
 
 exports.handler = async function (event, context) {
+  const { name, email, subject, message } = JSON.parse(event.body)
+
   const transporter = nodemailer.createTransport(
     smtpTransport({
       service: 'gmail',
@@ -13,11 +15,11 @@ exports.handler = async function (event, context) {
   )
 
   try {
-    const response = await transporter.sendMail({
-      from: 'portfoliouser1991@gmail.com', // sender address
-      to: 'markyto91@gmail.com', // list of receivers
-      subject: `***`, // Subject line
-      html: `nothing feels better than this`, // html body
+    await transporter.sendMail({
+      from: 'portfoliouser1991@gmail.com',
+      to: 'markyto91@gmail.com',
+      subject: subject,
+      text: `Name: ${name}, Email: ${email}, Message: ${message}`,
     })
   } catch (error) {
     console.log(error)
