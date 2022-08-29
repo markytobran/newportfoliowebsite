@@ -1,9 +1,9 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { ref, computed } from 'vue'
 let progressBarWidth = ref(0)
 
 function progressBar() {
-  var interval = setInterval(function () {
+  let interval = setInterval(function () {
     progressBarWidth.value += 1
     if (progressBarWidth.value === 100) {
       clearInterval(interval)
@@ -14,7 +14,7 @@ setTimeout(progressBar, 600)
 </script>
 
 <template>
-  <div class="absolute top-0 w-full h-full flex flex-col justify-center items-center">
+  <div class="w-full h-full flex flex-col justify-center items-center loading">
     <img src="../../assets/M.png" class="h-8" />
     <h5 class="text-white ml-1 text-md">Mark</h5>
     <p class="text-slate-400 text-xs darker-grey">Mark is thinking</p>
@@ -27,5 +27,10 @@ setTimeout(progressBar, 600)
 <style>
 .progress-bar {
   width: 350px;
+}
+
+.loading {
+  position: fixed;
+  top: 10%;
 }
 </style>

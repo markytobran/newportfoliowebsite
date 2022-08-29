@@ -14,7 +14,7 @@ const beforeEnter = (el) => {
 <template>
   <section class="h-screen w-screen">
     <!-- BackGround stars -->
-    <transition-group appear @before-enter="beforeEnter" @enter="enter">
+    <transition-group appear @before-enter="beforeEnter">
       <span v-for="star in 300" :key="star" class="absolute right-0 bg-white z-0 home-page-stars" :data-index="star"> </span>
     </transition-group>
 

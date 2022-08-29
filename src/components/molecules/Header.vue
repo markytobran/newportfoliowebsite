@@ -12,8 +12,8 @@ const navHeaders = [
 </script>
 
 <template>
-  <header class="fixed md:relative bottom-0 h-20 md:h-screen w-full md:w-48 bg-black md:bg-dark-grey z-50">
-    <nav class="flex flex-col justify-center align-center relative pt-6 md:pt-0 w-full">
+  <header class="fixed md:relative bottom-0 h-20 md:h-screen w-full md:w-40 bg-black md:bg-dark-grey z-50">
+    <nav class="flex flex-col justify-center align-center relative pt-6 md:pt-0 w-full md:w-40">
       <!--Desktop Logo-->
       <RouterLink to="/" class="hidden md:flex flex-col mb-14 bg-black h-48 flex-col justify-center align-center">
         <img src="../../assets/M.png" class="w-16 h-12 mt-2 mx-auto" />
