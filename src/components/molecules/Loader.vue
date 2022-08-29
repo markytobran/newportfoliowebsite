@@ -31,6 +31,6 @@ setTimeout(progressBar, 600)
 
 .loading {
   position: fixed;
-  top: 10%;
+  top: 7%;
 }
 </style>

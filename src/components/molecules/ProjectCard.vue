@@ -1,11 +1,14 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import Github from '../icons/Github.vue'
 import ExternalLink from '../icons/ExternalLink.vue'
 
 const props = defineProps({
   project: Object,
 })
+
+const frontRotation = ref('rotateY(0deg)')
+const backRotation = ref('rotateY(180deg)')
 
 const projectType = computed(() =>
   props.project.type === 'front-end'
@@ -20,12 +23,22 @@ const projectType = computed(() =>
 function getImageUrl(folder, name) {
   return new URL(`../../assets/${folder}/${name}.png`, import.meta.url).href
 }
+
+const flipCardStart = () => {
+  frontRotation.value = 'rotateY(180deg)'
+  backRotation.value = 'rotateY(0deg)'
+}
+
+const flipCardEnd = () => {
+  frontRotation.value = 'rotateY(0deg)'
+  backRotation.value = 'rotateY(180deg)'
+}
 </script>
 
 <template>
-  <div class="project-card">
+  <div class="project-card" @touchstart="flipCardStart" @touchend="flipCardEnd">
     <!--FrontSide of the card-->
-    <div class="project-card-side project-card-front" :class="projectType">
+    <div class="project-card-side project-card-front" :class="projectType" :style="{ transform: frontRotation }">
       <figure class="flex justify-center items-center relative h-1/2 mb-2">
         <img :src="getImageUrl('projects', project.coverPhoto)" :alt="project.name" />
         <figcaption>{{ project.name }}</figcaption>
@@ -49,7 +62,7 @@ function getImageUrl(folder, name) {
       </span>
     </div>
     <!--BackSide of the card-->
-    <div class="project-card-side project-card-back" :class="projectType">
+    <div class="project-card-side project-card-back" :class="projectType" :style="{ transform: backRotation }">
       <img src="../../assets/M.png" class="h-9" />
       <h5 class="text-white ml-1 text-md">Mark</h5>
       <span class="capitalize text-white mt-5 font-extrabold"> {{ project.type }} project </span>
@@ -98,15 +111,12 @@ function getImageUrl(folder, name) {
   @apply bg-black flex flex-col w-full justify-center items-center;
   transform: rotateY(180deg);
 }
-.project-card:hover .project-card-front,
-.project-card:active .project-card-front {
+.project-card:hover .project-card-front {
   transform: rotateY(180deg);
 }
-.project-card:hover .project-card-back,
-.project-card:active .project-card-front {
+.project-card:hover .project-card-back {
   transform: rotateY(0);
 }
-
 .move-right {
   animation: moveRight 1s linear infinite;
 }
