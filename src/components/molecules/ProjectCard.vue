@@ -23,7 +23,7 @@ function getImageUrl(folder, name) {
 </script>
 
 <template>
-  <div class="project-card" @touch>
+  <div class="project-card">
     <!--FrontSide of the card-->
     <div class="project-card-side project-card-front" :class="projectType">
       <figure class="flex justify-center items-center relative h-1/2 mb-2">
