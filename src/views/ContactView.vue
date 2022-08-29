@@ -114,9 +114,9 @@ onMounted(() => {
           {{ errorMessage }}
         </p>
         <form @submit.prevent="submitMessage" novalidate>
-          <div class="flex space-x-4 w-full mb-5 mt-5">
-            <input type="text" min="3" max="255" class="h-12 bg-mid-grey w-1/2 pl-5 rounded-md outline-0" placeholder="Name" v-model="name" />
-            <input type="email" class="h-12 bg-mid-grey w-1/2 pl-5 rounded-md outline-0" placeholder="Email" v-model="email" />
+          <div class="flex flex-col md:flex-row md:space-x-4 w-full mb-5 mt-5">
+            <input type="text" min="3" max="255" class="h-12 bg-mid-grey w-full pl-5 rounded-md outline-0" placeholder="Name" v-model="name" />
+            <input type="email" class="h-12 mt-5 md:mt-0 bg-mid-grey w-full pl-5 rounded-md outline-0" placeholder="Email" v-model="email" />
           </div>
           <input type="text" class="w-full h-12 bg-mid-grey pl-5 rounded-md outline-0" placeholder="Subject" v-model="subject" />
           <textarea rows="4" class="w-full h-full bg-mid-grey pl-5 pt-5 rounded-md mt-5 outline-0" placeholder="Message" v-model="message" />
