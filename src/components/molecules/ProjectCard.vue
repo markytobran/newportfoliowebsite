@@ -23,7 +23,7 @@ function getImageUrl(folder, name) {
 </script>
 
 <template>
-  <div class="project-card">
+  <div class="project-card" @touch>
     <!--FrontSide of the card-->
     <div class="project-card-side project-card-front" :class="projectType">
       <figure class="flex justify-center items-center relative h-1/2 mb-2">
@@ -98,10 +98,12 @@ function getImageUrl(folder, name) {
   @apply bg-black flex flex-col w-full justify-center items-center;
   transform: rotateY(180deg);
 }
-.project-card:hover .project-card-front {
+.project-card:hover .project-card-front,
+.project-card:active .project-card-front {
   transform: rotateY(180deg);
 }
-.project-card:hover .project-card-back {
+.project-card:hover .project-card-back,
+.project-card:active .project-card-front {
   transform: rotateY(0);
 }
 
