@@ -5,7 +5,7 @@ const spaces = [3, 6, 11, 14, 19, 24, 26, 29, 31, 35]
 
 const beforeEnter = (el) => {
   el.style.right = Math.random() * window.innerWidth + 'px'
-  el.style.top = Math.random() * window.innerHeight - 70 + 'px'
+  el.style.top = Math.random() * window.innerHeight - 80 + 'px'
   el.style.width = el.dataset.index % 3 === 0 ? '3px' : el.dataset.index % 2 === 0 ? '2px' : '1px'
   el.style.height = el.dataset.index % 3 === 0 ? '3px' : el.dataset.index % 2 === 0 ? '2px' : '1px'
 }
@@ -15,7 +15,7 @@ const beforeEnter = (el) => {
   <section class="h-screen w-screen">
     <!-- BackGround stars -->
     <transition-group appear @before-enter="beforeEnter" @enter="enter">
-      <span v-for="star in 400" :key="star" class="absolute right-0 bg-white z-0 home-page-stars" :data-index="star"> </span>
+      <span v-for="star in 300" :key="star" class="absolute right-0 bg-white z-0 home-page-stars" :data-index="star"> </span>
     </transition-group>
 
     <!--Title -->
