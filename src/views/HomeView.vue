@@ -19,7 +19,7 @@ const beforeEnter = (el) => {
     </transition-group>
 
     <!--Title -->
-    <div id="title" class="absolute top-1/2 left-1/2 -translate-x-2/4 -mt-12 w-full px-12 text-white text-center font-extrabold">
+    <div id="title" class="absolute top-1/2 left-1/2 -translate-x-2/4 -mt-24 md:-mt-12 w-full px-16 md:px-12 text-white text-center font-extrabold">
       <div class="mb-12">
         <span
           v-for="(letter, index) in message.split('')"

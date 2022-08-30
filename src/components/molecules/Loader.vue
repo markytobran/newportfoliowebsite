@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 let progressBarWidth = ref(0)
-const progressTime = window.innerWidth > 500 ? 500 : 580
+const progressTime = window.innerWidth > 500 ? 300 : 580
 
 function progressBar() {
   let interval = setInterval(function () {
@@ -28,6 +28,12 @@ setTimeout(progressBar, progressTime)
 <style>
 .progress-bar {
   width: 350px;
+}
+
+@media screen and (max-width: 500px) {
+  .progress-bar {
+    width: 250px;
+  }
 }
 
 .loading {

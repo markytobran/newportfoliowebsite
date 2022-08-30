@@ -107,7 +107,7 @@ onMounted(() => {
   <section class="h-full lg:h-screen w-full lg:w-screen flex flex-col xl:flex-row xl:items-center">
     <GlassCard class="w-full lg:w-10/12 xl:w-5/12 text-white mb-8 relative z-30" :title="cardTitle">
       <div v-if="showForm" id="contact-form" class="opacity-0">
-        <p class="text-white text-lg">
+        <p class="text-white text-sm md:text-lg">
           My inbox is always open. Whether you have a question or just want to say hi.<br />I will try my best to get back to you.
         </p>
         <p class="bg-red-700 p-3 rounded-lg mt-3" v-if="errorMessage.length">
@@ -115,11 +115,28 @@ onMounted(() => {
         </p>
         <form @submit.prevent="submitMessage" novalidate>
           <div class="flex flex-col md:flex-row md:space-x-4 w-full mb-5 mt-5">
-            <input type="text" min="3" max="255" class="h-12 bg-mid-grey w-full pl-5 rounded-md outline-0" placeholder="Name" v-model="name" />
-            <input type="email" class="h-12 mt-5 md:mt-0 bg-mid-grey w-full pl-5 rounded-md outline-0" placeholder="Email" v-model="email" />
+            <input
+              type="text"
+              min="3"
+              max="255"
+              class="h-12 text-sm md:text-lg bg-mid-grey w-full pl-5 rounded-md outline-0"
+              placeholder="Name"
+              v-model="name"
+            />
+            <input
+              type="email"
+              class="h-12 mt-5 text-sm md:text-lg md:mt-0 bg-mid-grey w-full pl-5 rounded-md outline-0"
+              placeholder="Email"
+              v-model="email"
+            />
           </div>
-          <input type="text" class="w-full h-12 bg-mid-grey pl-5 rounded-md outline-0" placeholder="Subject" v-model="subject" />
-          <textarea rows="4" class="w-full h-full bg-mid-grey pl-5 pt-5 rounded-md mt-5 outline-0" placeholder="Message" v-model="message" />
+          <input type="text" class="w-full text-sm md:text-lg h-12 bg-mid-grey pl-5 rounded-md outline-0" placeholder="Subject" v-model="subject" />
+          <textarea
+            rows="4"
+            class="w-full text-sm md:text-lg h-full bg-mid-grey pl-5 pt-5 rounded-md mt-5 outline-0"
+            placeholder="Message"
+            v-model="message"
+          />
           <button class="h-12 border-2 border-cyan-blue px-8 py-3 text-cyan-blue block ml-auto mt-5 rounded-sm">Send message</button>
         </form>
       </div>
