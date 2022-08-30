@@ -36,7 +36,7 @@ const flipCardEnd = () => {
 </script>
 
 <template>
-  <div class="project-card select-none" @touchstart="flipCardStart" @touchend="flipCardEnd">
+  <div class="project-card select-none sm:select-auto" @touchstart="flipCardStart" @touchend="flipCardEnd">
     <!--FrontSide of the card-->
     <div class="project-card-side project-card-front" :class="projectType" :style="{ transform: frontRotation }">
       <figure class="flex justify-center items-center relative h-1/2 mb-2">
