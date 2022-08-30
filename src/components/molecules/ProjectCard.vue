@@ -7,7 +7,8 @@ const props = defineProps({
   project: Object,
 })
 
-const flip = ref('')
+const frontRotation = ref('rotateY(0deg)')
+const backRotation = ref('rotateY(180deg)')
 
 const projectType = computed(() =>
   props.project.type === 'front-end'
@@ -23,19 +24,21 @@ function getImageUrl(folder, name) {
   return new URL(`../../assets/${folder}/${name}.png`, import.meta.url).href
 }
 
-const flipFront = () => {
-  flip.value = 'flip'
+const flipCardStart = () => {
+  frontRotation.value = 'rotateY(180deg)'
+  backRotation.value = 'rotateY(0deg)'
 }
 
-const flipEnd = () => {
-  flip.value = 'not-flip'
+const flipCardEnd = () => {
+  frontRotation.value = 'rotateY(0deg)'
+  backRotation.value = 'rotateY(180deg)'
 }
 </script>
 
 <template>
-  <div class="project-card select-none" :class="flip" @touchstart="flipFront" @touchend="flipEnd">
+  <div class="project-card select-none" @touchstart="flipCardStart" @touchend="flipCardEnd" @mouseover="flipCardStart" @mouseleave="flipCardEnd">
     <!--FrontSide of the card-->
-    <div class="project-card-side project-card-front" :class="projectType">
+    <div class="project-card-side project-card-front" :class="projectType" :style="{ transform: frontRotation }">
       <figure class="flex justify-center items-center relative h-1/2 mb-2">
         <img :src="getImageUrl('projects', project.coverPhoto)" :alt="project.name" />
         <figcaption>{{ project.name }}</figcaption>
@@ -59,7 +62,7 @@ const flipEnd = () => {
       </span>
     </div>
     <!--BackSide of the card-->
-    <div class="project-card-side project-card-back" :class="projectType">
+    <div class="project-card-side project-card-back" :class="projectType" :style="{ transform: backRotation }">
       <img src="../../assets/M.png" class="h-9" />
       <h5 class="text-white ml-1 text-md">Mark</h5>
       <span class="capitalize text-white mt-5 font-extrabold"> {{ project.type }} project </span>
@@ -108,29 +111,6 @@ const flipEnd = () => {
   @apply bg-black flex flex-col w-full justify-center items-center;
   transform: rotateY(180deg);
 }
-.project-card:hover .project-card-front {
-  transform: rotateY(180deg);
-}
-.project-card:hover .project-card-back {
-  transform: rotateY(0);
-}
-
-.flip .project-card-front {
-  transform: rotateY(180deg);
-}
-
-.flip .project-card-back {
-  transform: rotateY(0);
-}
-
-.not-flip .project-card-front {
-  transform: rotateY(0);
-}
-
-.not-flip .project-card-front {
-  transform: rotateY(180deg);
-}
-
 .move-right {
   animation: moveRight 1s linear infinite;
 }

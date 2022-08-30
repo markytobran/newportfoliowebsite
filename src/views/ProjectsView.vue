@@ -116,25 +116,25 @@ const sortedAndFilteredProjects = computed(() => {
 <template>
   <section class="h-full lg:h-screen w-full lg:w-screen xl:px-20 xl:pt-8">
     <h1 class="text-cyan-blue font-extrabold mb-8">Some things I've built</h1>
-    <div class="flex">
+    <div class="flex flex-col sm:flex-row">
       <div>
         <h5 class="text-cyan-blue text-xl mb-5">Filters:</h5>
-        <ol class="flex w-full">
-          <li class="text-white border-b-white border-b-8 h-24 lg:h-auto">
+        <ol class="flex flex-col md:flex-row w-full">
+          <li class="text-white mb-3 md:mb-0 border-b-white border-b-8 md:h-24 lg:h-auto">
             <button @click="changeFilter('all')" class="text-left">All Projects</button>
           </li>
-          <li class="text-white ml-14 border-b-primary-pink border-b-8">
+          <li class="text-white mb-3 md:mb-0 md:ml-14 border-b-primary-pink border-b-8">
             <button @click="changeFilter('front-end')" class="text-left">Front End Projects</button>
           </li>
-          <li class="text-white ml-14 border-b-cyan-blue border-b-8">
+          <li class="text-white mb-3 md:mb-0 md:ml-14 border-b-cyan-blue border-b-8">
             <button @click="changeFilter('back-end')" class="text-left">Back End Projects</button>
           </li>
-          <li class="text-white ml-14 border-gradient-pink-cyan border-b-8">
+          <li class="text-white md:ml-14 border-gradient-pink-cyan border-b-8">
             <button @click="changeFilter('full-stack')" class="text-left">Full Stack Projects</button>
           </li>
         </ol>
       </div>
-      <div class="ml-48 flex flex-col">
+      <div class="mt-6 md:mt-0 md:ml-48 flex flex-col z-20">
         <h5 class="text-cyan-blue text-xl mb-5">Sort By:</h5>
         <CustomSelect :options="['Newest first', 'Oldest first', 'Name - A-Z', 'Name - Z-A']" @selected="changeSortBy" />
       </div>
