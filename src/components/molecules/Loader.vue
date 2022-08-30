@@ -1,6 +1,7 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 let progressBarWidth = ref(0)
+const progressTime = window.innerWidth > 500 ? 500 : 580
 
 function progressBar() {
   let interval = setInterval(function () {
@@ -10,7 +11,7 @@ function progressBar() {
     }
   }, 10)
 }
-setTimeout(progressBar, 600)
+setTimeout(progressBar, progressTime)
 </script>
 
 <template>

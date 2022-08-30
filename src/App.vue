@@ -14,7 +14,7 @@ let isLoading = ref(false)
 let isAlertBoxOpen = ref(false)
 
 router.beforeEach((to, from, next) => {
-  isLoading.value = true
+  setTimeout(() => (isLoading.value = true), 300)
   setTimeout(() => (isLoading.value = false), 2000)
   next()
 })
@@ -22,7 +22,7 @@ router.beforeEach((to, from, next) => {
 const beforeEnter = (el) => {
   el.style.transform = 'translateX(800px)'
   el.style.right = Math.random() * 500 + 'px'
-  el.style.top = Math.random() * (window.innerHeight - 80) + 'px'
+  el.style.top = Math.random() * (window.innerHeight - 100) + 'px'
   el.style.width = el.dataset.index % 3 === 0 ? '3px' : el.dataset.index % 2 === 0 ? '2px' : '1px'
   el.style.height = el.dataset.index % 3 === 0 ? '3px' : el.dataset.index % 2 === 0 ? '2px' : '1px'
 }
