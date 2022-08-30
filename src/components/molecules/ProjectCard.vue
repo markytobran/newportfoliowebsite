@@ -7,8 +7,7 @@ const props = defineProps({
   project: Object,
 })
 
-const frontRotation = ref('rotateY(0deg)')
-const backRotation = ref('rotateY(180deg)')
+const rotate = ref(false)
 
 const projectType = computed(() =>
   props.project.type === 'front-end'
@@ -24,21 +23,15 @@ function getImageUrl(folder, name) {
   return new URL(`../../assets/${folder}/${name}.png`, import.meta.url).href
 }
 
-const flipCardStart = () => {
-  frontRotation.value = 'rotateY(180deg)'
-  backRotation.value = 'rotateY(0deg)'
-}
-
-const flipCardEnd = () => {
-  frontRotation.value = 'rotateY(0deg)'
-  backRotation.value = 'rotateY(180deg)'
+function flip() {
+  rotate.value = !rotate.value
 }
 </script>
 
 <template>
-  <div class="project-card select-none sm:select-auto" @touchstart="flipCardStart" @touchend="flipCardEnd">
+  <div class="project-card select-none" @touchstart="flip" @touchend="flip" :class="{ flip: rotate }">
     <!--FrontSide of the card-->
-    <div class="project-card-side project-card-front" :class="projectType" :style="{ transform: frontRotation }">
+    <div class="project-card-side project-card-front" :class="projectType">
       <figure class="flex justify-center items-center relative h-1/2 mb-2">
         <img :src="getImageUrl('projects', project.coverPhoto)" :alt="project.name" />
         <figcaption>{{ project.name }}</figcaption>
@@ -62,7 +55,7 @@ const flipCardEnd = () => {
       </span>
     </div>
     <!--BackSide of the card-->
-    <div class="project-card-side project-card-back" :class="projectType" :style="{ transform: backRotation }">
+    <div class="project-card-side project-card-back" :class="projectType">
       <img src="../../assets/M.png" class="h-9" />
       <h5 class="text-white ml-1 text-md">Mark</h5>
       <span class="capitalize text-white mt-5 font-extrabold"> {{ project.type }} project </span>
@@ -111,10 +104,12 @@ const flipCardEnd = () => {
   @apply bg-black flex flex-col w-full justify-center items-center;
   transform: rotateY(180deg);
 }
-.project-card:hover .project-card-front {
+.project-card:hover .project-card-front,
+.flip .project-card-front {
   transform: rotateY(180deg);
 }
-.project-card:hover .project-card-back {
+.project-card:hover .project-card-back,
+.flip .project-card-back {
   transform: rotateY(0);
 }
 .move-right {
