@@ -28,7 +28,7 @@ const flipFront = () => {
 }
 
 const flipEnd = () => {
-  flip.value = ''
+  flip.value = 'not-flip'
 }
 </script>
 
@@ -121,6 +121,14 @@ const flipEnd = () => {
 
 .flip .project-card-back {
   transform: rotateY(0);
+}
+
+.not-flip .project-card-front {
+  transform: rotateY(0);
+}
+
+.not-flip .project-card-front {
+  transform: rotateY(180deg);
 }
 
 .move-right {
