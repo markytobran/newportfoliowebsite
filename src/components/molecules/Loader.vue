@@ -32,7 +32,7 @@ setTimeout(progressBar, progressTime)
 
 @media screen and (max-width: 500px) {
   .progress-bar {
-    width: 160px;
+    width: 130px;
   }
 }
 
