@@ -7,7 +7,7 @@ const props = defineProps({
   project: Object,
 })
 
-const rotate = ref(false)
+const flip = ref('')
 
 const projectType = computed(() =>
   props.project.type === 'front-end'
@@ -23,16 +23,17 @@ function getImageUrl(folder, name) {
   return new URL(`../../assets/${folder}/${name}.png`, import.meta.url).href
 }
 
-function flipFront() {
-  rotate.value = true
+const flipFront = () => {
+  flip.value = 'flip'
 }
-function flipEnd() {
-  rotate.value = false
+
+const flipEnd = () => {
+  flip.value = ''
 }
 </script>
 
 <template>
-  <div class="project-card select-none" @touchstart="flipFront" @touchend="flipEnd" :class="{ flip: rotate }">
+  <div class="project-card select-none" :class="flip" @touchstart="flipFront" @touchend="flipEnd">
     <!--FrontSide of the card-->
     <div class="project-card-side project-card-front" :class="projectType">
       <figure class="flex justify-center items-center relative h-1/2 mb-2">
@@ -107,16 +108,22 @@ function flipEnd() {
   @apply bg-black flex flex-col w-full justify-center items-center;
   transform: rotateY(180deg);
 }
-.project-card:hover .project-card-front,
+.project-card:hover .project-card-front {
+  transform: rotateY(180deg);
+}
+.project-card:hover .project-card-back {
+  transform: rotateY(0);
+}
+
 .flip .project-card-front {
   transform: rotateY(180deg);
 }
-.project-card:hover .project-card-back,
+
 .flip .project-card-back {
   transform: rotateY(0);
 }
 
-.flip .move-right {
+.move-right {
   animation: moveRight 1s linear infinite;
 }
 
