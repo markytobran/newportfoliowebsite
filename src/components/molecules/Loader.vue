@@ -15,7 +15,7 @@ setTimeout(progressBar, progressTime)
 </script>
 
 <template>
-  <div class="w-full h-full flex flex-col justify-center items-center loading">
+  <div class="w-full h-full flex flex-col justify-center items-center loading -mt-12 md:mt-0">
     <img src="../../assets/M.png" class="h-8" />
     <h5 class="text-white ml-1 text-md">Mark</h5>
     <p class="text-slate-400 text-xs darker-grey">Mark is thinking</p>
