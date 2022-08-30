@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 let progressBarWidth = ref(0)
-const progressTime = window.innerWidth > 500 ? 100 : 580
+const progressTime = window.innerWidth > 500 ? 100 : 600
 
 function progressBar() {
   let interval = setInterval(function () {
