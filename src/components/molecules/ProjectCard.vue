@@ -23,13 +23,16 @@ function getImageUrl(folder, name) {
   return new URL(`../../assets/${folder}/${name}.png`, import.meta.url).href
 }
 
-function flip() {
-  rotate.value = !rotate.value
+function flipFront() {
+  rotate.value = true
+}
+function flipEnd() {
+  rotate.value = false
 }
 </script>
 
 <template>
-  <div class="project-card select-none" @touchstart="flip" @touchend="flip" :class="{ flip: rotate }">
+  <div class="project-card select-none" @touchstart="flipFront" @touchend="flipEnd" :class="{ flip: rotate }">
     <!--FrontSide of the card-->
     <div class="project-card-side project-card-front" :class="projectType">
       <figure class="flex justify-center items-center relative h-1/2 mb-2">
@@ -112,7 +115,8 @@ function flip() {
 .flip .project-card-back {
   transform: rotateY(0);
 }
-.move-right {
+
+.flip .move-right {
   animation: moveRight 1s linear infinite;
 }
 
