@@ -11,7 +11,6 @@ const router = useRouter()
 const route = useRoute()
 
 let isLoading = ref(false)
-let isAlertBoxOpen = ref(false)
 
 router.beforeEach((to, from, next) => {
   setTimeout(() => (isLoading.value = true), 300)
@@ -36,33 +35,11 @@ const enter = (el, done) => {
     repeat: -1,
   })
 }
-
-function closeAlertBox() {
-  isAlertBoxOpen.value = false
-}
-
-onMounted(() => {
-  setTimeout(() => (isAlertBoxOpen.value = true), 2200)
-})
 </script>
 
 <template>
   <Header />
   <main class="bg-light-grey overflow-x-hidden relative">
-    <div
-      class="w-1/3 absolute left-1/2 h-20 bg-red-400 -translate-x-1/2 -translate-y-20 z-50 rounded-xl flex flex-col items-center justify-center delay-500 cursor-pointer transition-all duration-900 ease-in-out"
-      :class="isAlertBoxOpen ? 'translate-y-0' : ''"
-      @click="closeAlertBox"
-    >
-      <span class="absolute top-0 right-3">X</span>
-      <p class="text-black font-extrabold text-center">Please bear in mind. The website is still under construction.</p>
-      <div class="flex gap-2">
-        <img src="./assets/under-construction.png" alt="Under construction" width="28" height="28" />
-        <img src="./assets/under-construction2.png" alt="Under construction" width="28" height="28" />
-        <img src="./assets/under-construction3.png" alt="Under construction" width="28" height="28" />
-      </div>
-    </div>
-
     <!--Star animation-->
     <transition-group appear @before-enter="beforeEnter" @enter="enter">
       <span v-for="star in 100" :key="star" class="absolute right-0 bg-white z-0" :data-index="star"> </span>
