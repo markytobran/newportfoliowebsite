@@ -32,7 +32,7 @@ const beforeEnter = (el) => {
       </div>
       <RouterLink
         to="/projects"
-        class="text-white font-bold text-xl rounded-lg border-2 px-6 lg:px-10 py-3 md:py-4 text-md md:text-xl tracking-widest ease-in-out duration-1000 hover:bg-dark-cyan-blue hover:border-dark-cyan-blue"
+        class="text-white font-bold text-sm md:text-xl rounded-lg border-2 px-6 lg:px-10 py-3 md:py-4 text-md md:text-xl tracking-widest ease-in-out duration-1000 hover:bg-dark-cyan-blue hover:border-dark-cyan-blue"
         >View my work</RouterLink
       >
     </div>

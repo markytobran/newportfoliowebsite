@@ -13,7 +13,7 @@ const route = useRoute()
 let isLoading = ref(false)
 
 router.beforeEach((to, from, next) => {
-  isLoading.value = true
+  setTimeout(() => (isLoading.value = false), 300)
   setTimeout(() => (isLoading.value = false), 2000)
   next()
 })
