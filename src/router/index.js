@@ -1,10 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import AboutView from '../views/AboutView.vue'
-import ContactView from '../views/ContactView.vue'
-import WorkView from '../views/WorkView.vue'
-import ProjectsView from '../views/ProjectsView.vue'
-import SkillsView from '../views/SkillsView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,7 +15,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: AboutView,
+      component: () => import('../views/AboutView.vue'),
     },
     {
       path: '/contact',
@@ -28,7 +23,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: ContactView,
+      component: () => import('../views/ContactView.vue'),
     },
     {
       path: '/work',
@@ -36,7 +31,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: WorkView,
+      component: () => import('../views/WorkView.vue'),
     },
     {
       path: '/skills',
@@ -44,7 +39,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: SkillsView,
+      component: () => import('../views/SkillsView.vue'),
     },
     {
       path: '/projects',
@@ -52,7 +47,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: ProjectsView,
+      component: () => import('../views/ProjectsView.vue'),
     },
     {
       path: '/:catchAll(.*)',
