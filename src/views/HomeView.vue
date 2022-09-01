@@ -5,7 +5,7 @@ const spaces = [3, 6, 11, 14, 19, 24, 26, 29, 31, 35]
 
 const beforeEnter = (el) => {
   el.style.right = Math.random() * window.innerWidth + 'px'
-  el.style.top = Math.random() * window.innerHeight - 100 + 'px'
+  el.style.top = Math.random() * window.innerHeight - 120 + 'px'
   el.style.width = el.dataset.index % 3 === 0 ? '3px' : el.dataset.index % 2 === 0 ? '2px' : '1px'
   el.style.height = el.dataset.index % 3 === 0 ? '3px' : el.dataset.index % 2 === 0 ? '2px' : '1px'
 }
@@ -32,9 +32,16 @@ const beforeEnter = (el) => {
       </div>
       <RouterLink
         to="/projects"
-        class="text-white font-bold text-sm md:text-xl rounded-lg border-2 px-6 lg:px-10 py-3 md:py-4 text-md md:text-xl tracking-widest ease-in-out duration-1000 hover:bg-dark-cyan-blue hover:border-dark-cyan-blue"
-        >View my work</RouterLink
+        class="text-white font-bold text-sm md:text-xl view-work rounded-lg mb-20 border-2 mr-6 px-6 lg:px-10 py-3 md:py-4 text-md md:text-xl border-dark-cyan-blue hover:border-white tracking-widest ease-in-out duration-1000 hover:bg-dark-cyan-blue hover:border-dark-cyan-blue"
+        >View my work
+      </RouterLink>
+      <a
+        href="/resume/MarkBranCV.pdf"
+        download
+        class="text-white cursor-pointer inline-block mt-6 sm:mt-0 font-bold text-sm md:text-xl rounded-lg border-2 px-6 lg:px-10 py-3 md:py-4 text-md md:text-xl tracking-widest ease-in-out duration-1000 hover:border-dark-cyan-blue hover:bg-dark-cyan-blue"
       >
+        Download CV
+      </a>
     </div>
   </section>
 </template>
@@ -186,5 +193,11 @@ const beforeEnter = (el) => {
 
 .route-leave-active {
   transition: all 0.3s ease-out;
+}
+
+@media screen and (max-width: 490px) {
+  .view-work {
+    margin-right: 0;
+  }
 }
 </style>
