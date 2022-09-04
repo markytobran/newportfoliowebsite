@@ -13,7 +13,7 @@ const projects = [
     name: 'Restaurant',
     coverPhoto: 'restaurant',
     description: 'This fresh and modern project is a great example for a responsive restaurant website.',
-    websiteLink: 'https://www.markbran.co.uk/portfolio-work/restaurant/index.html',
+    websiteLink: '/static/restaurant/index.html',
     gitHubLink: 'https://github.com/markytobran/restaurant',
     techs: [
       { name: 'html5', classes: 'h-9 w-9' },
