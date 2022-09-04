@@ -41,7 +41,7 @@ const projects = [
     name: 'Music App',
     coverPhoto: 'music-app',
     description: 'I used the Deezer API to display the songs and the Audio WebAPi lets the user actually play the music.',
-    websiteLink: '/restaurant',
+    websiteLink: '/static/musicapp/index.html',
     gitHubLink: 'https://github.com/markytobran/musicapp',
     techs: [
       { name: 'html5', classes: 'h-9 w-9' },
@@ -56,7 +56,7 @@ const projects = [
     name: 'Weather app',
     coverPhoto: 'weather',
     description: 'This is a good old weather application. The background accommodates to the actual weather and temperature.',
-    websiteLink: '/restaurant',
+    websiteLink: '/static/weatherapp/index.html',
     gitHubLink: 'https://github.com/markytobran/weathervue',
     techs: [
       { name: 'html5', classes: 'h-9 w-9' },
@@ -71,7 +71,7 @@ const projects = [
     name: 'Gaming app',
     coverPhoto: 'player-stats',
     description: 'This is a Game Tracker application which allows the user to search on three different platforms.',
-    websiteLink: '/restaurant',
+    websiteLink: 'https://arcane-dusk-29236.herokuapp.com/',
     gitHubLink: 'https://github.com/markytobran/gametracker',
     techs: [
       { name: 'html5', classes: 'h-9 w-9' },
