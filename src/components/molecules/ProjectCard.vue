@@ -74,7 +74,7 @@ const flipCardEnd = () => {
           <Github />
           <span class="text-white mt-1">Github</span>
         </a>
-        <a :href="project.websiteLink" class="mr-4 cursor-pointer flex flex-col justify-center items-center">
+        <a :href="project.websiteLink" target="_blank" class="mr-4 cursor-pointer flex flex-col justify-center items-center">
           <ExternalLink />
           <span class="text-white mt-1">Website</span>
         </a>

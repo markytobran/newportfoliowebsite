@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+    <section id="sectiona">
+        <nav id="navbar">
+            <div class="nav-wrapper">
+                <a href="/index.html" class="brand-logo">Adventure</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="./login.html">Login</a></li>
+                    <li><a href="./register.html">Register</a></li>
+                </ul>
+            </div>
+        </nav>
+        <ul class="sidenav" id="mobile-demo">
+            <li><a href="./login.html">Login</a></li>
+            <li><a href="./register.html">Register</a></li>
+        </ul>
+    </section>
+    <div class="login-box">
+        <h1>Login</h1>
+        <div class="textbox">
+            <i class="fas fa-user"></i>
+            <input id="username" type="text" placeholder="Username" minlength="1" maxlength="20">
+        </div>
+
+        <div class="textbox">
+            <i class="fas fa-lock"></i>
+            <input id="password" type="password" placeholder="Password" minlength="1" maxlength="20">
+        </div>
+
+        <input type="button" class="btn" value="Sign in">
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="login.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

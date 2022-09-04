@@ -49,11 +49,11 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/ProjectsView.vue'),
     },
-    {
-      path: '/:catchAll(.*)',
-      name: 'notfound',
-      component: () => import('../views/NotFound.vue'),
-    },
+    // {
+    //   path: '/:catchAll(.*)',
+    //   name: 'notfound',
+    //   component: () => import('../views/NotFound.vue'),
+    // },
   ],
 })
 
