@@ -27,7 +27,7 @@ const projects = [
     name: 'Adventure',
     coverPhoto: 'adventure',
     description: 'This is a multi page travel application example. It contains three pages (landing, registration and login page)',
-    websiteLink: '/restaurant',
+    websiteLink: '/static/adventure/index.html',
     gitHubLink: 'https://github.com/markytobran/adventure',
     techs: [
       { name: 'html5', classes: 'h-9 w-9' },
