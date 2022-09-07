@@ -1,32 +1,89 @@
 <script setup>
+import { ref, computed } from 'vue'
 const props = defineProps({
   company: String,
   job: String,
   date: String,
   description: String,
-  url: String,
+  moreDescription: String,
+  jobList: String,
+  techs: String,
 })
+
+const showDescription = ref(false)
+
+const expCard = computed(() => (showDescription.value ? '960px' : '450px'))
+const rotateValue = computed(() => (showDescription.value ? 'rotate-90 ' : 'rotate-0'))
+
+const toggleDescription = () => {
+  showDescription.value = !showDescription.value
+}
 </script>
 
 <template>
-  <div class="bg-dark-grey rounded-xl p-3">
-    <slot />
+  <div
+    class="bg-dark-grey rounded-xl p-3 shadow-md shadow-primary-pink transition duration-150 ease-in-out cursor-pointer hover:-translate-y-3.5 hover:shadow-xl mb-20 hover:shadow-primary-pink experience-card"
+    :style="{ height: expCard }"
+  >
+    <div class="h-20">
+      <slot />
+    </div>
 
     <h4 class="text-white font-bold text-xl mb-3 mt-8">
       {{ company }}
     </h4>
     <span class="text-white text-lg block">{{ job }}</span>
-    <span
-      class="font-bold inline-block text-lg rounded-lg px-3 py-1 bg-primary-pink mr-3 mt-3"
-      >{{ date }}</span
-    >
+    <span class="font-bold inline-block text-lg rounded-lg px-3 py-1 bg-primary-pink mr-3 mt-3">{{ date }}</span>
     <p class="text-white text-sm mt-3">
       {{ description }}
     </p>
-    <a
-      class="text-white font-sm mt-5 block underline decoration-cyan-blue decoration-4 pb-3 cursor-pointer"
-      :href="url"
-      >Read more ></a
-    >
+    <a class="text-white font-sm mt-5 block underline decoration-cyan-blue decoration-4 pb-3 cursor-pointer" @click="toggleDescription">
+      Read more <span class="inline-block" :class="rotateValue">></span>
+    </a>
+    <transition name="description">
+      <div v-if="showDescription">
+        <p class="text-white text-sm mb-3">
+          {{ moreDescription }}
+        </p>
+        <ul class="text-white text-sm pl-7 pr-2">
+          <li class="mb-2 relative" v-for="list in jobList" :key="list">
+            {{ list }}
+          </li>
+        </ul>
+        <p>
+          <span class="font-bold inline-block text-lg rounded-lg px-3 py-1 bg-primary-pink mr-3 mt-3 mb-3"> Technologies: </span><br />
+          <span v-for="tech in techs" :key="tech" class="border border-2 rounded-md border-dark-cyan-blue px-1 inline-block mr-2 mt-2 text-white">
+            {{ tech }}
+          </span>
+        </p>
+      </div>
+    </transition>
   </div>
 </template>
+
+<style scoped>
+li::before {
+  content: '🚀  ';
+  position: absolute;
+  top: 8px;
+  left: -30px;
+  font-size: 1.1rem;
+}
+
+.description-enter-from {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.description-enter-active {
+  transition: all 0.3s ease-in;
+}
+
+.description-leave-to {
+  transform: translateY(-40px);
+  opacity: 0;
+}
+.description-leave-active {
+  transition: all 0.2s ease-in-out;
+}
+</style>

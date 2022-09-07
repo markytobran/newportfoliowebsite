@@ -25,7 +25,7 @@ const otherTech = ['GIT', 'GITHUB', 'BITBUCKET', 'NPM', 'JIRA', 'FIGMA', 'WORDPR
 <template>
   <section class="h-full lg:h-screen w-full lg:w-screen p-5 xl:p-10 flex flex-col justify-center">
     <div class="flex flex-col xl:flex-row items-start xl:items-center mt-20">
-      <GlassCard class="w-full md:w-10/12 xl:w-5/12 h-full text-white mb-8" title="Skills & Experience">
+      <GlassCard class="w-full md:w-10/12 xl:w-5/12 h-full text-white mb-8" title="My skills">
         <p class="mb-5 text-sm md:text-base w-11/12">
           I create successful responsive websites that are fast, easy to use, and built with best practices. The main area of my expertise is
           front-end development, HTML, CSS, JS, building small and medium web apps, features, bug fixes, animations, and coding interactive layouts.
@@ -57,8 +57,9 @@ const otherTech = ['GIT', 'GITHUB', 'BITBUCKET', 'NPM', 'JIRA', 'FIGMA', 'WORDPR
         </div>
       </div>
     </div>
+    <!-- 
     <div class="w-full flex flex-col xl:flex-row mt-10 justify-start lg:justify-center mb-20">
-      <ExperienceCard
+     <ExperienceCard
         class="w-full md:w-9/12 xl:w-1/3 2xl:w-1/4 mb-3 md:mb-0 mr-5"
         company="Toolstations / E-commerce Website"
         job="Front-end Developer"
@@ -83,5 +84,6 @@ const otherTech = ['GIT', 'GITHUB', 'BITBUCKET', 'NPM', 'JIRA', 'FIGMA', 'WORDPR
         <img class="h-14 mt-5 mx-auto rounded-xl" src="https://jphildreth.com/wp-content/uploads/2020/09/logo-jpeg-05-05.jpg" />
       </ExperienceCard>
     </div>
+     -->
   </section>
 </template>
