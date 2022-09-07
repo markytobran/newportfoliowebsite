@@ -12,11 +12,11 @@ const beforeEnter = (el) => {
 </script>
 
 <template>
-  <section class="h-screen w-screen hello">
+  <section class="h-screen w-screen">
     <!-- BackGround stars -->
-    <!-- <transition-group appear @before-enter="beforeEnter">
+    <transition-group appear @before-enter="beforeEnter">
       <span v-for="star in 300" :key="star" class="absolute right-0 bg-white z-0 home-page-stars" :data-index="star"> </span>
-    </transition-group> -->
+    </transition-group>
 
     <!--Title -->
     <div id="title" class="absolute top-1/2 left-1/2 -translate-x-2/4 -mt-24 md:-mt-12 w-full px-16 md:px-12 text-white text-center font-extrabold">
@@ -193,10 +193,6 @@ const beforeEnter = (el) => {
 
 .route-leave-active {
   transition: all 0.3s ease-out;
-}
-
-.hello {
-  background: url('../assets/space.jpg');
 }
 
 @media screen and (max-width: 490px) {
