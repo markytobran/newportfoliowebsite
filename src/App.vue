@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, watch, computed } from 'vue'
 import { RouterLink, RouterView, useRouter, useRoute } from 'vue-router'
-import gsap from 'gsap'
+import { gsap } from 'gsap/gsap-core'
 import Github from './components/icons/Github.vue'
 import Linkedin from './components/icons/Linkedin.vue'
 import Header from './components/molecules/Header.vue'

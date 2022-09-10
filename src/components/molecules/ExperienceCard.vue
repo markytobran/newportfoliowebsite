@@ -37,9 +37,9 @@ const toggleDescription = () => {
     <p class="text-white text-sm mt-3">
       {{ description }}
     </p>
-    <a class="text-white font-sm mt-5 block underline decoration-cyan-blue decoration-4 pb-3 cursor-pointer" @click="toggleDescription">
+    <button class="text-white font-sm mt-5 block underline decoration-cyan-blue decoration-4 pb-3 cursor-pointer" @click="toggleDescription">
       Read more <span class="inline-block" :class="rotateValue">></span>
-    </a>
+    </button>
     <transition name="description">
       <div v-if="showDescription">
         <p class="text-white text-sm mb-3">
@@ -82,8 +82,5 @@ li::before {
 .description-leave-to {
   transform: translateY(-40px);
   opacity: 0;
-}
-.description-leave-active {
-  transition: all 0.2s ease-in-out;
 }
 </style>
