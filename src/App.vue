@@ -13,7 +13,7 @@ const route = useRoute()
 let isLoading = ref(false)
 
 router.beforeEach((to, from, next) => {
-  setTimeout(() => (isLoading.value = true), 300)
+  setTimeout(() => (isLoading.value = true), 250)
   setTimeout(() => (isLoading.value = false), 2000)
   next()
 })
@@ -81,7 +81,7 @@ const enter = (el, done) => {
 
 .route-enter-active {
   transition: all 0.5s ease-out;
-  transition-delay: 1.6s;
+  transition-delay: 2s;
 }
 
 .route-leave-to {
