@@ -13,7 +13,7 @@ const route = useRoute()
 let isLoading = ref(false)
 
 router.beforeEach((to, from, next) => {
-  setTimeout(() => (isLoading.value = true), 150)
+  setTimeout(() => (isLoading.value = true), 250)
   setTimeout(() => (isLoading.value = false), 2000)
   next()
 })
@@ -94,7 +94,7 @@ const enter = (el, done) => {
 }
 
 .loader-enter-active {
-  animation: slider 2.2s both;
+  animation: slider 2s both;
 }
 
 .loader-leave-active {
