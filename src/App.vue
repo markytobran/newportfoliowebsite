@@ -81,7 +81,7 @@ const enter = (el, done) => {
 
 .route-enter-active {
   transition: all 0.5s ease-out;
-  transition-delay: 2s;
+  transition-delay: 1.8s;
 }
 
 .route-leave-to {
