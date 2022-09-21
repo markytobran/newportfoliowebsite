@@ -11,8 +11,6 @@ const props = defineProps({
 })
 
 const showDescription = ref(false)
-
-const expCard = computed(() => (showDescription.value ? '960px' : '450px'))
 const rotateValue = computed(() => (showDescription.value ? 'rotate-90 ' : 'rotate-0'))
 
 const toggleDescription = () => {
@@ -22,8 +20,7 @@ const toggleDescription = () => {
 
 <template>
   <div
-    class="bg-dark-grey rounded-xl p-3 shadow-md shadow-primary-pink transition duration-150 ease-in-out cursor-pointer hover:-translate-y-3.5 hover:shadow-xl mb-20 hover:shadow-primary-pink experience-card"
-    :style="{ height: expCard }"
+    class="bg-dark-grey h-fit rounded-xl pt-3 pb-10 px-3 shadow-md shadow-primary-pink transition-all duration-150 ease-in-out cursor-pointer hover:-translate-y-3.5 hover:shadow-xl mb-20 hover:shadow-primary-pink experience-card"
   >
     <div class="h-20">
       <slot />
@@ -72,15 +69,20 @@ li::before {
 
 .description-enter-from {
   opacity: 0;
-  transform: translateY(-20px);
+  transform: translateY(-50%);
 }
 
 .description-enter-active {
-  transition: all 0.3s ease-in;
+  transition: all 0.5s ease-out;
+  transition-delay: 0.5s;
 }
 
 .description-leave-to {
-  transform: translateY(-40px);
   opacity: 0;
+  transform: translateY(0%);
+}
+
+.description-leave-active {
+  transition: all 1s ease-out;
 }
 </style>

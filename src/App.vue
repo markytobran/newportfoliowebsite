@@ -42,7 +42,7 @@ const enter = (el, done) => {
   <main class="bg-light-grey overflow-x-hidden relative">
     <!--Star animation-->
     <transition-group appear @before-enter="beforeEnter" @enter="enter">
-      <span v-for="star in 100" :key="star" class="absolute right-0 bg-white z-0" :data-index="star"> </span>
+      <span v-for="star in 100" :key="star" class="absolute right-0 bg-white z-0" :data-index="star"></span>
     </transition-group>
 
     <!--Loader animation-->

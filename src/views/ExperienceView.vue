@@ -98,7 +98,7 @@ const sortedCompanies = computed(() => {
         <CustomSelect :options="['Newest first', 'Oldest first', 'Name - A-Z', 'Name - Z-A']" @selected="changeSortBy" />
       </div>
     </div>
-    <div class="grid grid-cols-1 w-full gap-10 lg:grid-cols-2 mt-14 lg:w-10/12 2xl:grid-cols-3 3xl:grid-cols-4">
+    <div class="grid grid-cols-1 grid-rows-1 w-full gap-10 lg:grid-cols-2 mt-14 lg:w-10/12 2xl:grid-cols-3 3xl:grid-cols-4">
       <ExperienceCard
         v-for="company in sortedCompanies"
         :key="company.name"
