@@ -175,26 +175,6 @@ const beforeEnter = (el) => {
   }
 }
 
-/* route transitions */
-.route-enter-from {
-  opacity: 0;
-  transform: translateX(-50%);
-}
-
-.route-enter-active {
-  transition: all 0.5s ease-out;
-  transition-delay: 1.6s;
-}
-
-.route-leave-to {
-  opacity: 0;
-  transform: translateX(0%);
-}
-
-.route-leave-active {
-  transition: all 0.3s ease-out;
-}
-
 @media screen and (max-width: 490px) {
   .view-work {
     margin-right: 0;
