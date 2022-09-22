@@ -23,29 +23,29 @@ const otherTech = ['GIT', 'GITHUB', 'BITBUCKET', 'NPM', 'JIRA', 'FIGMA', 'WORDPR
 </script>
 
 <template>
-  <section class="h-full lg:h-screen w-full lg:w-screen p-5 xl:p-10 flex flex-col justify-center">
+  <section class="h-full lg:h-screen w-full lg:w-screen p-10 xl:p-10 flex flex-col justify-center">
     <div class="flex flex-col xl:flex-row items-start xl:items-center md:mt-20">
       <GlassCard class="w-full md:w-10/12 xl:w-5/12 h-full text-white mb-8" title="My skills">
-        <p class="mb-5 text-sm md:text-base w-11/12">
+        <p class="mb-5 text-md md:text-lg w-11/12">
           I create successful responsive websites that are fast, easy to use, and built with best practices. The main area of my expertise is
           front-end development, HTML, CSS, JS, building small and medium web apps, features, bug fixes, animations, and coding interactive layouts.
         </p>
 
-        <p class="mb-5 w-11/12">I also have full-stack developer experience with popular Node JS (AWS and Amplify).</p>
+        <p class="mb-5 w-11/12 text-md md:text-lg">I also have full-stack developer experience with popular Node JS (AWS and Amplify).</p>
 
-        <p class="w-11/12">
+        <p class="w-11/12 text-md md:text-lg">
           Since beginning my journey as a developer nearly 3 years ago, I’ve worked remotely and collaborated with talented people to create unique
           web products for both business and consumer use.
         </p>
 
-        <p class="mt-8">
+        <p class="mt-8 text-md md:text-lg">
           Visit my
-          <span class="text-cyan-blue font-extrabold">LinkedIn</span> profile for more details or just
-          <span class="text-cyan-blue font-extrabold">contact</span> me.
+          <a href="https://www.linkedin.com/in/markbran/" class="text-cyan-blue font-extrabold" target="_blank">LinkedIn</a> profile for more details
+          or just <RouterLink to="/contact" class="text-cyan-blue font-extrabold">contact</RouterLink> me.
         </p>
       </GlassCard>
       <!--SKILL Section-->
-      <div class="w-full xl:w-1/2 h-full xl:ml-24 xl:mt-20 mb-32">
+      <div class="w-full xl:w-1/2 h-full xl:ml-24 xl:translate-y-32 mb-32">
         <div class="px-3 w-full lg:w-10/12">
           <SkillElement title="Front-end" :tech-list="frontEnd" />
         </div>
