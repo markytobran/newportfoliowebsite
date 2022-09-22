@@ -49,7 +49,8 @@ const toggleDescription = () => {
           </li>
         </ul>
         <p>
-          <span class="font-bold inline-block text-lg rounded-lg px-3 py-1 bg-primary-pink mr-3 mt-3 mb-3"> Technologies: </span><br />
+          <span class="font-bold inline-block text-lg text-dark-grey rounded-lg px-3 py-1 bg-primary-pink mr-3 mt-3 mb-3"> Technologies: </span>
+          <br />
           <span v-for="tech in techs" :key="tech" class="border border-2 rounded-md border-dark-cyan-blue px-1 inline-block mr-2 mt-2 text-white">
             {{ tech }}
           </span>
