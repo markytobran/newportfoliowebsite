@@ -23,7 +23,7 @@ const otherTech = ['GIT', 'GITHUB', 'BITBUCKET', 'NPM', 'JIRA', 'FIGMA', 'WORDPR
 </script>
 
 <template>
-  <section class="h-full lg:h-screen w-full lg:w-screen p-10 xl:p-10 flex flex-col justify-center">
+  <section class="h-full lg:h-screen w-full lg:w-screen p-10 xl:p-20 flex flex-col justify-center">
     <div class="flex flex-col xl:flex-row items-start xl:items-center md:mt-20">
       <GlassCard class="w-full md:w-10/12 xl:w-5/12 h-full text-white mb-8" title="My skills">
         <p class="mb-5 text-md md:text-lg w-11/12">
