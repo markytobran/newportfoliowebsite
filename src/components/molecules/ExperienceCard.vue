@@ -20,21 +20,22 @@ const toggleDescription = () => {
 
 <template>
   <div
-    class="bg-dark-grey h-fit rounded-xl pt-3 pb-10 px-3 shadow-md shadow-primary-pink transition-all duration-150 ease-in-out cursor-pointer hover:-translate-y-3.5 hover:shadow-xl mb-20 hover:shadow-primary-pink experience-card"
+    class="bg-dark-grey text-white h-fit relative rounded-xl pt-3 pb-10 px-3 shadow-md shadow-primary-pink transition-all duration-150 ease-in-out cursor-pointer hover:-translate-y-3.5 hover:shadow-xl mb-20 hover:shadow-primary-pink experience-card"
   >
     <div class="h-20">
       <slot />
     </div>
 
-    <h4 class="text-white font-bold text-xl mb-3 mt-8">
+    <h4 class="font-bold text-xl mb-3 mt-8">
       {{ company }}
     </h4>
-    <span class="text-white text-lg block">{{ job }}</span>
-    <span class="font-bold inline-block text-lg rounded-lg px-3 py-1 bg-primary-pink mr-3 mt-3">{{ date }}</span>
-    <p class="text-white text-sm mt-3">
+
+    <span class="text-lg block">{{ job }}</span>
+    <span class="font-bold inline-block text-lg rounded-lg px-3 py-1 bg-primary-pink mr-3 mt-3 text-dark-grey">{{ date }}</span>
+    <p class="text-sm mt-3">
       {{ description }}
     </p>
-    <button class="text-white font-sm mt-5 block underline decoration-cyan-blue decoration-4 pb-3 cursor-pointer" @click="toggleDescription">
+    <button class="font-sm mt-5 block underline decoration-cyan-blue decoration-4 pb-3 cursor-pointer" @click="toggleDescription">
       Read more <span class="inline-block" :class="rotateValue">></span>
     </button>
     <transition name="description">
