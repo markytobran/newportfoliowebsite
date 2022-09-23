@@ -64,7 +64,7 @@ const otherTech = ['GIT', 'GITHUB', 'BITBUCKET', 'NPM', 'JIRA', 'FIGMA', 'WORDPR
 @media (min-width: 1024px) and (max-width: 1280px) {
   .skills {
     width: 80%;
-    margin-top: 110px;
+    margin-top: 120px;
   }
 }
 </style>
