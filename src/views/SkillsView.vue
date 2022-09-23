@@ -45,7 +45,7 @@ const otherTech = ['GIT', 'GITHUB', 'BITBUCKET', 'NPM', 'JIRA', 'FIGMA', 'WORDPR
         </p>
       </GlassCard>
       <!--SKILL Section-->
-      <div class="w-full xl:w-1/2 h-full xl:ml-24 xl:translate-y-12 mb-32 md:mb-0">
+      <div class="w-full xl:w-1/2 h-full xl:ml-24 xl:translate-y-12 mb-32 md:mb-0 pb-20">
         <div class="px-3 w-full lg:w-10/12">
           <SkillElement title="Front-end" :tech-list="frontEnd" />
         </div>
