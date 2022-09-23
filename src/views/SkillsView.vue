@@ -25,7 +25,7 @@ const otherTech = ['GIT', 'GITHUB', 'BITBUCKET', 'NPM', 'JIRA', 'FIGMA', 'WORDPR
 <template>
   <section class="h-full lg:h-screen w-full lg:w-screen p-10 xl:p-24 flex flex-col justify-center">
     <div class="flex flex-col xl:flex-row items-start xl:items-center">
-      <GlassCard class="w-full md:w-11/12 xl:w-5/12 h-full text-white mb-8" title="My skills">
+      <GlassCard class="w-full md:w-11/12 xl:w-5/12 h-full text-white mb-8 mt-10" title="My skills">
         <p class="mb-5 text-md md:text-lg w-11/12">
           I create successful responsive websites that are fast, easy to use, and built with best practices. The main area of my expertise is
           front-end development, HTML, CSS, JS, building small and medium web apps, features, bug fixes, animations, and coding interactive layouts.
