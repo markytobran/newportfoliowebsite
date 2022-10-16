@@ -13,7 +13,7 @@ const navHeaders = [
 
 <template>
   <header class="fixed md:relative bottom-0 h-20 md:h-screen w-full md:w-40 bg-black md:bg-dark-grey z-50">
-    <nav class="flex flex-col justify-center align-center relative pt-6 md:pt-0 w-full md:w-40">
+    <nav class="flex flex-col justify-center align-center pt-4 pb-2 md:pt-0 md:pb-0 relative w-full md:w-40">
       <!--Desktop Logo-->
       <RouterLink to="/" class="hidden md:flex flex-col mb-14 bg-black h-48 flex-col justify-center align-center">
         <img src="../../assets/M.png" class="w-16 h-12 mt-2 mx-auto" />
@@ -29,10 +29,13 @@ const navHeaders = [
             />
           </svg>
         </RouterLink>
-        <RouterLink v-for="nav in navHeaders" :to="nav.path" tag="li" class="text-white font-bold text-sm md:text-xl mb-1">
-          {{ nav.name }}
-        </RouterLink>
-        <li class="flex mt-20 absolute md:relative bottom-10 left-2">
+        <li v-for="nav in navHeaders" class="relative md:w-full md:mb-2">
+          <RouterLink :to="nav.path" class="text-white font-bold text-sm md:text-xl mb-1">
+            {{ nav.name }}
+          </RouterLink>
+          <span class="h-3 w-3 bg-cyan-blue block mx-auto md:absolute md:top-2 md:right-1 rounded-full opacity-0"></span>
+        </li>
+        <li class="flex mt-20 absolute md:relative bottom-12 left-2">
           <a href="https://github.com/markytobran" target="_blank">
             <Github class="mr-4 cursor-pointer" />
           </a>
@@ -44,3 +47,15 @@ const navHeaders = [
     </nav>
   </header>
 </template>
+
+<style scoped>
+ul li a ~ span {
+  display: block;
+  transform: translateX(-30px);
+  transition: all 0.5s 1s ease-in;
+}
+ul li a.router-link-active ~ span {
+  transform: translateX(0);
+  opacity: 1;
+}
+</style>
