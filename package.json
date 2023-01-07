@@ -10,9 +10,7 @@
   },
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.14.1",
-    "gsap": "^3.10.4",
     "nodemailer-smtp-transport": "^2.7.4",
-    "pinia": "^2.0.13",
     "three": "^0.140.2",
     "vue": "^3.2.37",
     "vue-router": "^4.0.14",

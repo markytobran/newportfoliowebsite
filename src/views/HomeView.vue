@@ -1,72 +1,79 @@
-<script setup>
-const message = 'Hi, my name is Mark Bran I am a web developer.'
-const pinkCharactersList = [15, 16, 17, 18, 19, 20, 21, 22, 23]
-const spaces = [3, 6, 11, 14, 19, 24, 26, 29, 31, 35]
-
-const beforeEnter = (el) => {
-  el.style.right = Math.random() * window.innerWidth + 'px'
-  el.style.top = Math.random() * window.innerHeight - 120 + 'px'
-  el.style.width = el.dataset.index % 3 === 0 ? '3px' : el.dataset.index % 2 === 0 ? '2px' : '1px'
-  el.style.height = el.dataset.index % 3 === 0 ? '3px' : el.dataset.index % 2 === 0 ? '2px' : '1px'
-}
-</script>
-
 <template>
-  <section class="h-screen w-screen">
+  <section class="h-screen flex flex-col items-center justify-center relative">
     <!-- BackGround stars -->
     <transition-group appear @before-enter="beforeEnter">
-      <span v-for="star in 300" :key="star" class="absolute right-0 bg-white z-0 home-page-stars" :data-index="star"> </span>
+      <span v-for="star in 150" :key="star" class="absolute right-0 bg-white z-0 home-page-stars" :data-index="star"> </span>
     </transition-group>
+    <canvas id="canvas" class="cursor-pointer -mt-24" />
 
-    <!--Title -->
-    <div id="title" class="absolute top-1/2 left-1/2 -translate-x-2/4 -mt-24 md:-mt-12 w-full px-16 md:px-12 text-white text-center font-extrabold">
-      <div class="mb-12">
-        <span
-          v-for="(letter, index) in message.split('')"
-          :key="letter"
-          class="inline-block letter text-2xl md:text-4xl xl:text-5.5xl tracking-widest"
-          :class="[spaces.includes(index) ? 'ml-3' : '', pinkCharactersList.includes(index) ? 'text-primary-pink' : 'text-white']"
-        >
-          {{ letter }}
-        </span>
+    <div class="w-full flex flex-col justify-center align-items">
+      <div class="flex justify-center align-items mb-3 home-cursor">
+        <CursorIcon class="swipe -mt-24 md:-mt-36" />
       </div>
-      <RouterLink
-        to="/projects"
-        class="text-white font-bold text-sm md:text-xl view-work rounded-lg mb-20 border-2 mr-6 px-6 lg:px-10 py-3 md:py-4 text-md md:text-xl border-dark-cyan-blue hover:border-white tracking-widest ease-in-out duration-1000 hover:bg-dark-cyan-blue hover:border-dark-cyan-blue"
-        >View my work
-      </RouterLink>
-      <a
-        href="/resume/MarkBranCV.pdf"
-        download
-        class="text-white cursor-pointer inline-block mt-6 sm:mt-0 font-bold text-sm md:text-xl rounded-lg border-2 px-6 lg:px-10 py-3 md:py-4 text-md md:text-xl tracking-widest ease-in-out duration-1000 hover:border-dark-cyan-blue hover:bg-dark-cyan-blue"
-      >
-        Download CV
-      </a>
+      <p class="text-xl md:text-2xl mx-auto block w-11/12 text-center text-white -mt-10 mb:mt-0 mb-12 md:mb-20 home-text">
+        I am a degree educated Front End Software Engineer with 3 years commercial experience.
+      </p>
+      <div class="flex justify-center align-center home-button">
+        <RouterLink
+          to="/projects"
+          class="text-white font-bold text-sm md:text-xl rounded-lg mb-20 border-2 mr-6 px-6 lg:px-10 py-3 md:py-4 text-md md:text-xl border-dark-cyan-blue hover:border-white tracking-widest ease-in-out duration-1000 hover:bg-dark-cyan-blue hover:border-dark-cyan-blue"
+          >View my work
+        </RouterLink>
+        <a
+          href="/resume/MarkBranCV.pdf"
+          download
+          class="text-white font-bold text-sm md:text-xl rounded-lg mb-20 border-2 px-6 lg:px-10 py-3 md:py-4 text-md md:text-xl border-white hover:border-dark-cyan-blue tracking-widest ease-in-out duration-1000 hover:bg-dark-cyan-blue hover:border-dark-cyan-blue"
+        >
+          Download CV
+        </a>
+      </div>
     </div>
   </section>
 </template>
 
+<script setup>
+import CursorIcon from '../components/atoms/CursorIcon.vue'
+import { onMounted, ref } from 'vue'
+import { Effect } from '../utils/particleAnimation.js'
+
+const beforeEnter = (el) => {
+  el.style.right = Math.random() * window.innerWidth + 'px'
+  el.style.top = Math.random() * window.innerHeight - 60 + 'px'
+  el.style.width = el.dataset.index % 3 === 0 ? '3px' : el.dataset.index % 2 === 0 ? '2px' : '1px'
+  el.style.height = el.dataset.index % 3 === 0 ? '3px' : el.dataset.index % 2 === 0 ? '2px' : '1px'
+}
+
+onMounted(() => {
+  const canvas = document.getElementById('canvas')
+  const ctx = canvas.getContext('2d', {
+    willReadFrequently: true,
+  })
+
+  const fontSize = window.innerWidth > 601 ? 80 : 58
+  const maxTextMultiplier = window.innerWidth > 601 ? 0.4 : 0.8
+  let effect
+
+  canvas.width = window.innerWidth * 0.8
+  canvas.height = window.innerHeight * 0.6
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    effect.render()
+    requestAnimationFrame(animate)
+  }
+
+  setTimeout(() => {
+    effect = new Effect(ctx, canvas.width, canvas.height, fontSize, maxTextMultiplier)
+    effect.wrapText('Hi, my name is Mark Bran')
+  }, 500)
+
+  setTimeout(() => {
+    animate()
+  }, 3000)
+})
+</script>
+
 <style scoped>
-.letter:nth-child(odd) {
-  transform: translateY(-700%);
-  animation: fall 4s 1.9s ease-in forwards, rubber 1s 4s infinite;
-}
-
-.letter:nth-child(even) {
-  transform: translateY(-700%);
-  animation: fall 5s 2s ease-in forwards, shake 1s 5s infinite;
-}
-
-.letter:nth-child(3n) {
-  transform: translateY(-700%);
-  animation: fall 7s 1.6s ease-in forwards, shake 1s 7s infinite;
-}
-
-.letter:nth-child(4n) {
-  transform: translateY(-700%);
-  animation: fall 7s 1.2s ease-in forwards, rubber 1s 7s infinite;
-}
-
 .home-page-stars {
   animation: animStar 20s linear infinite;
 }
@@ -111,73 +118,70 @@ const beforeEnter = (el) => {
   }
 }
 
-/*****FALL */
+.swipe {
+  animation: swipe 3s 4s both infinite linear;
+}
 
-@keyframes fall {
+@keyframes swipe {
+  0% {
+    transform: translateY(-60%);
+  }
+  20% {
+    transform: translateY(50%);
+  }
+  30% {
+    transform: translateY(0%);
+  }
+  40% {
+    transform: translateY(-60%);
+  }
+  50% {
+    transform: translateY(50%);
+  }
+  60% {
+    transform: translateY(0%);
+  }
+  70% {
+    transform: translateX(-200%);
+  }
+  90% {
+    transform: translateX(200%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.home-cursor {
+  opacity: 0;
+  animation-name: fade-in;
+  animation-duration: 0.7s;
+  animation-delay: 4s;
+  animation-fill-mode: forwards;
+}
+
+.home-text {
+  opacity: 0;
+  animation-name: fade-in;
+  animation-duration: 0.7s;
+  animation-delay: 5s;
+  animation-fill-mode: forwards;
+}
+
+.home-button {
+  opacity: 0;
+  animation-name: fade-in;
+  animation-duration: 0.7s;
+  animation-delay: 6s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fade-in {
   0% {
     opacity: 0;
   }
-  35% {
+  100% {
     opacity: 1;
-    transform: translateY(0%);
-  }
-  45% {
-    transform: translateY(-30%);
-  }
-  60% {
-    transform: translateY(0%);
-  }
-  75% {
-    transform: translateY(-10%);
-  }
-  100% {
-    transform: translateY(0%);
-  }
-}
-/* ****************Animation*********/
-@keyframes rubber {
-  0% {
-    transform: translateY(-100%);
-    transform: scale3d(1, 1, 1);
-  }
-  35% {
-    transform: scale3d(1.25, 0.75, 1);
-  }
-  45% {
-    transform: scale3d(0.75, 1, 1);
-  }
-  60% {
-    transform: scale3d(1.2, 0.8, 1);
-  }
-  75% {
-    transform: scale3d(1.05, 0.95, 1);
-  }
-  100% {
-    transform: scale3d(1, 1, 1);
-  }
-}
-
-@keyframes shake {
-  0% {
-    transform: translate(0px, 0px) rotate(0deg);
-  }
-  25% {
-    transform: translate(1px, 1px) rotate(1deg);
-  }
-  50% {
-    transform: translate(-1px, -1px) rotate(-1deg);
-  }
-  75% {
-    transform: translate(2px, -1px) rotate(2deg);
-  }
-  100% {
-    transform: translate(-1px, 1px) rotate(-1deg);
-  }
-}
-
-@media screen and (max-width: 490px) {
-  .view-work {
-    margin-right: 0;
   }
 }
 </style>

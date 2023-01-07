@@ -7,7 +7,7 @@ import CubeAnimation from '../components/molecules/CubeAnimation.vue'
     <div class="flex flex-col xl:flex-row items-start xl:items-center">
       <div class="w-full">
         <GlassCard title="About me" class="w-full lg:w-10/12">
-          <p class="text-white">Degree educated Front-End Developer with a 2 year history of designing, building and maintaining websites.</p>
+          <p class="text-white">Degree educated Front-End Developer with a 3 year history of designing, building and maintaining websites.</p>
           <p class="mb-5 text-white">I have a serious passion for UI effects, animations and creating intuitive, dynamic user experiences.</p>
           <p class="mb-5 text-white">Well-organised person, problem solver, independent employee with high attention to detail.</p>
           <p class="mb-5 text-white">Interested in the entire frontend spectrum and working on ambitious projects with positive people.</p>

@@ -1,7 +1,6 @@
 <script setup>
 import { ref, onMounted, watch, computed } from 'vue'
 import { RouterLink, RouterView, useRouter, useRoute } from 'vue-router'
-import { gsap } from 'gsap'
 import Github from './components/icons/Github.vue'
 import Linkedin from './components/icons/Linkedin.vue'
 import Header from './components/molecules/Header.vue'
@@ -13,39 +12,18 @@ const route = useRoute()
 let isLoading = ref(false)
 
 router.beforeEach((to, from, next) => {
-  setTimeout(() => (isLoading.value = true), 150)
-  setTimeout(() => (isLoading.value = false), 2000)
+  if (to.name !== 'home') {
+    setTimeout(() => (isLoading.value = true), 150)
+    setTimeout(() => (isLoading.value = false), 2000)
+  }
   next()
 })
-
-const beforeEnter = (el) => {
-  el.style.transform = 'translateX(800px)'
-  el.style.right = Math.random() * 500 + 'px'
-  el.style.top = Math.random() * (window.innerHeight - 120) + 'px'
-  el.style.width = el.dataset.index % 3 === 0 ? '3px' : el.dataset.index % 2 === 0 ? '2px' : '1px'
-  el.style.height = el.dataset.index % 3 === 0 ? '3px' : el.dataset.index % 2 === 0 ? '2px' : '1px'
-}
-
-const enter = (el, done) => {
-  gsap.to(el, {
-    x: -2000,
-    duration: 12,
-    onComplete: done,
-    delay: 0.2 * Math.random() * 200,
-    repeat: -1,
-  })
-}
 </script>
 
 <template>
   <Header />
-  <main class="bg-light-grey overflow-x-hidden relative">
-    <!--Star animation-->
-    <transition-group appear @before-enter="beforeEnter" @enter="enter">
-      <span v-for="star in 100" :key="star" class="absolute right-0 bg-white z-0" :data-index="star"></span>
-    </transition-group>
-
-    <!--Loader animation-->
+  <main class="bg-light-grey overflow-x-hidden relative w-full">
+    <!-- Loader animation-->
     <transition name="loader">
       <Loader v-if="isLoading" />
     </transition>
@@ -53,7 +31,7 @@ const enter = (el, done) => {
     <!--Router-->
     <router-view v-slot="{ Component }">
       <transition name="route" mode="out-in">
-        <component :is="Component" class="p-10"></component>
+        <component :is="Component" class="p-3 md:p-10" />
       </transition>
     </router-view>
   </main>
