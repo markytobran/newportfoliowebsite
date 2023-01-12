@@ -10,7 +10,7 @@ class Effect {
     this.maxTextWidth = this.canvasWidth * maxTextMultiplier
 
     this.particles = []
-    this.gap = 4
+    this.gap = 3
     this.mouse = {
       radius: 20000,
       x: 0,
