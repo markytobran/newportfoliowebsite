@@ -33,14 +33,20 @@
 
 <script setup>
 import CursorIcon from '../components/atoms/CursorIcon.vue'
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, onUnmounted } from 'vue'
 import { Effect } from '../utils/particleAnimation.js'
+
+let effect
 
 const beforeEnter = (el) => {
   el.style.right = Math.random() * window.innerWidth + 'px'
   el.style.top = Math.random() * window.innerHeight - 60 + 'px'
   el.style.width = el.dataset.index % 3 === 0 ? '3px' : el.dataset.index % 2 === 0 ? '2px' : '1px'
   el.style.height = el.dataset.index % 3 === 0 ? '3px' : el.dataset.index % 2 === 0 ? '2px' : '1px'
+}
+
+const trackEvents = (event) => {
+  effect.updateMousePosition(event)
 }
 
 onMounted(() => {
@@ -51,7 +57,6 @@ onMounted(() => {
 
   const fontSize = window.innerWidth > 601 ? 80 : 58
   const maxTextMultiplier = window.innerWidth > 601 ? 0.4 : 0.8
-  let effect
 
   canvas.width = window.innerWidth * 0.8
   canvas.height = window.innerHeight * 0.6
@@ -64,12 +69,19 @@ onMounted(() => {
 
   setTimeout(() => {
     effect = new Effect(ctx, canvas.width, canvas.height, fontSize, maxTextMultiplier)
+    window.addEventListener('mousemove', trackEvents, true)
+    window.addEventListener('touchmove', trackEvents, true)
     effect.wrapText('Hi, my name is Mark Bran')
   }, 500)
 
   setTimeout(() => {
     animate()
   }, 3000)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('mousemove', trackEvents, true)
+  window.removeEventListener('touchmove', trackEvents, true)
 })
 </script>
 

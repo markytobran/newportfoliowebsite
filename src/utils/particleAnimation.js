@@ -16,12 +16,11 @@ class Effect {
       x: 0,
       y: 0,
     }
-    window.addEventListener('mousemove', (e) => {
-      this.mouse.x = e.x
-      this.mouse.y = e.y
-    })
   }
-
+  updateMousePosition(e) {
+    this.mouse.x = e.x
+    this.mouse.y = e.y
+  }
   wrapText(text) {
     const gradient = this.context.createLinearGradient(0, 0, this.canvasWidth, this.canvasHeight)
     gradient.addColorStop(0.2, '#08fdd8')
