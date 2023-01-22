@@ -35,6 +35,8 @@
 import CursorIcon from '../components/atoms/CursorIcon.vue'
 import { onMounted, ref, onUnmounted } from 'vue'
 import { Effect } from '../utils/particleAnimation.js'
+const TABLET = 991
+const MOBILE = 601
 
 let effect
 
@@ -45,8 +47,22 @@ const beforeEnter = (el) => {
   el.style.height = el.dataset.index % 3 === 0 ? '3px' : el.dataset.index % 2 === 0 ? '2px' : '1px'
 }
 
-const trackEvents = (event) => {
+const updateMousePosition = (event) => {
   effect.updateMousePosition(event)
+}
+
+const updateTouchPosition = (event) => {
+  effect.updateTouchPosition(event)
+}
+
+const createEventListeners = () => {
+  if (window.innerWidth > TABLET) window.addEventListener('mousemove', updateMousePosition, false)
+  else window.addEventListener('touchmove', updateTouchPosition, false)
+}
+
+const removeEventListeners = () => {
+  if (window.innerWidth > TABLET) window.removeEventListener('mousemove', updateMousePosition, false)
+  else window.removeEventListener('touchmove', updateTouchPosition, false)
 }
 
 onMounted(() => {
@@ -55,8 +71,8 @@ onMounted(() => {
     willReadFrequently: true,
   })
 
-  const fontSize = window.innerWidth > 601 ? 80 : 58
-  const maxTextMultiplier = window.innerWidth > 601 ? 0.4 : 0.8
+  const fontSize = window.innerWidth > MOBILE ? 80 : 58
+  const maxTextMultiplier = window.innerWidth > MOBILE ? 0.4 : 0.8
 
   canvas.width = window.innerWidth * 0.8
   canvas.height = window.innerHeight * 0.6
@@ -67,21 +83,26 @@ onMounted(() => {
     requestAnimationFrame(animate)
   }
 
+  function animateTouch() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    effect.renderTouch()
+    requestAnimationFrame(animateTouch)
+  }
+
   setTimeout(() => {
     effect = new Effect(ctx, canvas.width, canvas.height, fontSize, maxTextMultiplier)
-    window.addEventListener('mousemove', trackEvents, true)
-    window.addEventListener('touchmove', trackEvents, true)
+    createEventListeners()
     effect.wrapText('Hi, my name is Mark Bran')
   }, 500)
 
   setTimeout(() => {
-    animate()
+    if (window.innerWidth > TABLET) animate()
+    else animateTouch()
   }, 3000)
 })
 
 onUnmounted(() => {
-  window.removeEventListener('mousemove', trackEvents, true)
-  window.removeEventListener('touchmove', trackEvents, true)
+  removeEventListeners()
 })
 </script>
 

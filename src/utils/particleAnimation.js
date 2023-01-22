@@ -16,10 +16,19 @@ class Effect {
       x: 0,
       y: 0,
     }
+    this.touch = {
+      radius: 10000,
+      x: 0,
+      y: 0,
+    }
   }
   updateMousePosition(e) {
     this.mouse.x = e.x
     this.mouse.y = e.y
+  }
+  updateTouchPosition(e) {
+    this.touch.x = e.touches[0].clientX
+    this.touch.y = e.touches[0].clientY
   }
   wrapText(text) {
     const gradient = this.context.createLinearGradient(0, 0, this.canvasWidth, this.canvasHeight)
@@ -75,6 +84,12 @@ class Effect {
       particle.draw()
     })
   }
+  renderTouch() {
+    this.particles.forEach((particle) => {
+      particle.updateTouch()
+      particle.draw()
+    })
+  }
 }
 
 class Particle {
@@ -104,6 +119,19 @@ class Particle {
     this.distance = this.dx * this.dx + this.dy * this.dy
     this.force = -this.effect.mouse.radius / this.distance
     if (this.distance < this.effect.mouse.radius) {
+      this.angle = Math.atan2(this.dy, this.dx)
+      this.vx += this.force * Math.cos(this.angle)
+      this.vy += this.force * Math.sin(this.angle)
+    }
+    this.x += (this.vx *= this.friction) + (this.originX - this.x) * this.ease
+    this.y += (this.vy *= this.friction) + (this.originY - this.y) * this.ease
+  }
+  updateTouch() {
+    this.dx = this.effect.touch.x - this.x
+    this.dy = this.effect.touch.y - this.y
+    this.distance = this.dx * this.dx + this.dy * this.dy
+    this.force = -this.effect.touch.radius / this.distance
+    if (this.distance < this.effect.touch.radius) {
       this.angle = Math.atan2(this.dy, this.dx)
       this.vx += this.force * Math.cos(this.angle)
       this.vy += this.force * Math.sin(this.angle)
