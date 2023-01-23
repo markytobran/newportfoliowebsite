@@ -1,5 +1,5 @@
 <template>
-  <section class="flex flex-col items-center justify-center relative">
+  <section class="h-screen flex flex-col items-center justify-center relative overflow-hidden">
     <!-- BackGround stars -->
     <transition-group appear @before-enter="beforeEnter">
       <span v-for="star in 150" :key="star" class="absolute right-0 bg-white z-0 home-page-stars" :data-index="star"> </span>
