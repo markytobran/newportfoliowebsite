@@ -1,7 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue'
 import CustomSelect from '../components/atoms/CustomSelect.vue'
-import GlassCard from '../components/molecules/GlassCard.vue'
 import ProjectCard from '../components/molecules/ProjectCard.vue'
 
 const filter = ref('all')
@@ -16,9 +15,10 @@ const projects = [
     websiteLink: '/static/restaurant/index.html',
     gitHubLink: 'https://github.com/markytobran/restaurant',
     techs: [
-      { name: 'html5', classes: 'h-9 w-9' },
-      { name: 'css3', classes: 'h-9 w-9' },
-      { name: 'js', classes: 'h-7 w-8 mt-1' },
+      { name: 'html', classes: 'h-9 w-9' },
+      { name: 'css', classes: 'h-9 w-9' },
+      { name: 'javascript', classes: 'h-9 w-9' },
+      { name: 'git', classes: 'h-9 w-9' },
     ],
     date: '24 Sep 2019',
   },
@@ -30,9 +30,10 @@ const projects = [
     websiteLink: '/static/adventure/index.html',
     gitHubLink: 'https://github.com/markytobran/adventure',
     techs: [
-      { name: 'html5', classes: 'h-9 w-9' },
-      { name: 'css3', classes: 'h-9 w-9' },
-      { name: 'js', classes: 'h-7 w-8 mt-1' },
+      { name: 'html', classes: 'h-9 w-9' },
+      { name: 'css', classes: 'h-9 w-9' },
+      { name: 'javascript', classes: 'h-9 w-9' },
+      { name: 'git', classes: 'h-9 w-9' },
     ],
     date: '5 Feb 2020',
   },
@@ -44,10 +45,11 @@ const projects = [
     websiteLink: '/static/musicapp/index.html',
     gitHubLink: 'https://github.com/markytobran/musicapp',
     techs: [
-      { name: 'html5', classes: 'h-9 w-9' },
-      { name: 'css3', classes: 'h-9 w-9' },
-      { name: 'js', classes: 'h-7 w-8 mt-1' },
+      { name: 'html', classes: 'h-9 w-9' },
+      { name: 'css', classes: 'h-9 w-9' },
+      { name: 'javascript', classes: 'h-9 w-9' },
       { name: 'vue', classes: 'h-6 w-7 mt-1' },
+      { name: 'git', classes: 'h-9 w-9' },
     ],
     date: '23 Feb 2020',
   },
@@ -59,29 +61,33 @@ const projects = [
     websiteLink: '/static/weatherapp/index.html',
     gitHubLink: 'https://github.com/markytobran/weathervue',
     techs: [
-      { name: 'html5', classes: 'h-9 w-9' },
-      { name: 'css3', classes: 'h-9 w-9' },
-      { name: 'js', classes: 'h-7 w-8 mt-1' },
+      { name: 'html', classes: 'h-9 w-9' },
+      { name: 'css', classes: 'h-9 w-9' },
+      { name: 'javascript', classes: 'h-9 w-9' },
       { name: 'vue', classes: 'h-6 w-7 mt-1' },
+      { name: 'git', classes: 'h-9 w-9' },
     ],
     date: '30 Jan 2020',
   },
   {
     type: 'full-stack',
-    name: 'Gaming app',
-    coverPhoto: 'player-stats',
-    description: 'This is a Game Tracker application which allows the user to search on three different platforms.',
-    websiteLink: 'https://arcane-dusk-29236.herokuapp.com/',
-    gitHubLink: 'https://github.com/markytobran/gametracker',
+    name: 'Rodnary',
+    coverPhoto: 'rodnary',
+    description: 'Rodnary ultimate video platform for passionate anglers.',
+    websiteLink: 'https://rodnary-nuxt.vercel.app/',
+    gitHubLink: 'https://github.com/markytobran/rodnary-nuxt',
     techs: [
-      { name: 'html5', classes: 'h-9 w-9' },
-      { name: 'css3', classes: 'h-9 w-9' },
-      { name: 'js', classes: 'h-7 w-8 mt-1' },
-      { name: 'vue', classes: 'h-6 w-7 mt-1' },
+      { name: 'html', classes: 'h-9 w-9' },
+      { name: 'css', classes: 'h-9 w-9' },
+      { name: 'tailwind', classes: 'h-9 w-9' },
+      { name: 'javascript', classes: 'h-9 w-9' },
+      { name: 'nuxt', classes: 'h-6 w-8 mt-1' },
+      { name: 'typescript', classes: 'h-9 w-9'},
       { name: 'nodejs', classes: 'h-8 w-8' },
       { name: 'express', classes: 'h-8 w-9' },
+      { name: 'git', classes: 'h-9 w-9' },
     ],
-    date: '29 Mar 2020',
+    date: '29 Mar 2023',
   },
 ]
 
@@ -99,17 +105,15 @@ const filteredProjects = computed(() => {
 
 const sortedAndFilteredProjects = computed(() => {
   if (sortBy.value === 'Newest first') {
-    return filteredProjects.value.sort((a, b) => new Date(a.date) - new Date(b.date))
+    return filteredProjects.value.sort((a, b) => new Date(b.date) - new Date(a.date))
   }
   if (sortBy.value === 'Oldest first') {
-    return filteredProjects.value.sort((a, b) => new Date(b.date) - new Date(a.date))
+    return filteredProjects.value.sort((a, b) => new Date(a.date) - new Date(b.date))
   }
   if (sortBy.value === 'Name - A-Z') {
     return filteredProjects.value.sort((a, b) => a.name.localeCompare(b.name))
   }
-  if (sortBy.value === 'Name - Z-A') {
     return filteredProjects.value.sort((a, b) => b.name.localeCompare(a.name))
-  }
 })
 </script>
 
