@@ -74,7 +74,7 @@ const projects = [
     name: 'Rodnary',
     coverPhoto: 'rodnary',
     description: 'Rodnary ultimate video platform for passionate anglers.',
-    websiteLink: 'https://rodnary-nuxt.vercel.app/',
+    websiteLink: 'https://rodnary.co.uk/',
     gitHubLink: 'https://github.com/markytobran/rodnary-nuxt',
     techs: [
       { name: 'html', classes: 'h-9 w-9' },
